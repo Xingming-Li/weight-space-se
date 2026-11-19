@@ -1,0 +1,9 @@
+# The project is designed to be run on Colab that comes with PyTorch
+# pre-installed, so no installation is needed here.
+# If running in a different venv, PyTorch needs to be installed.
+# torch
+transformers
+datasets
+accelerate
+pyyaml
+scipy
