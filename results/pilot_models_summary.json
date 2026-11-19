@@ -1,0 +1,65 @@
+{
+  "env": {
+    "seed": 42,
+    "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "torch": "2.6.0+cu124",
+    "transformers": "5.23.0",
+    "python": "3.11.18"
+  },
+  "models": {
+    "Qwen/Qwen3-0.6B-Base": {
+      "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+      "n": 357,
+      "acc_sv": 0.5518207282913166,
+      "acc_en": 0.6694677871148459,
+      "gap_en_minus_sv": 0.11764705882352933,
+      "se_sv": 0.026320296676539526,
+      "se_en": 0.024896461738326343,
+      "latent_en_right_sv_wrong": 70,
+      "both_wrong": 90,
+      "sv_right_en_wrong": 28,
+      "both_right": 169,
+      "pred_letter_counts": {
+        "sv": [
+          75,
+          96,
+          104,
+          82
+        ],
+        "en": [
+          86,
+          111,
+          91,
+          69
+        ]
+      }
+    },
+    "Qwen/Qwen3.5-0.8B": {
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "n": 357,
+      "acc_sv": 0.5154061624649859,
+      "acc_en": 0.5574229691876751,
+      "gap_en_minus_sv": 0.04201680672268915,
+      "se_sv": 0.026450241332534315,
+      "se_en": 0.026287710147310194,
+      "latent_en_right_sv_wrong": 52,
+      "both_wrong": 121,
+      "sv_right_en_wrong": 37,
+      "both_right": 147,
+      "pred_letter_counts": {
+        "sv": [
+          81,
+          149,
+          55,
+          72
+        ],
+        "en": [
+          90,
+          119,
+          31,
+          117
+        ]
+      }
+    }
+  }
+}
