@@ -5,6 +5,7 @@ import argparse
 import json
 import random
 import re
+from collections import Counter
 from pathlib import Path
 
 from datasets import load_dataset
@@ -24,6 +25,7 @@ STOPWORDS = {
 
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 BAD_CHARS = re.compile(r"[|{}<>=\[\]_#*/\\]")
+UNIT_NO_NUM = re.compile(r"(°C|\bmm\b|\bcm\b|\bkm\b|\bkg\b|%)")
 
 
 def sentence_ok(sent, lang, min_words, max_words):
@@ -34,6 +36,8 @@ def sentence_ok(sent, lang, min_words, max_words):
         return False
     if BAD_CHARS.search(sent):
         return False
+    if UNIT_NO_NUM.search(sent):
+        return False
     if sum(c.isdigit() for c in sent) > 0.1 * len(sent):
         return False
     lowered = {w.strip(".,;:!?()\"'").lower() for w in words}
@@ -41,11 +45,11 @@ def sentence_ok(sent, lang, min_words, max_words):
 
 
 # Pick one maskable word index.
-def pick_target(words, tokenizer, rng):
+def pick_target(words, tokenizer, rng, lang):
     candidates = []
     for i, w in enumerate(words):
-        # Eliminate: capitalised / non-alphabetic / short
-        if w[0].isupper() or not w.isalpha() or len(w) < 3:
+        # Eliminate: functional / capitalised / non-alphabetic / short
+        if w.lower() in STOPWORDS[lang] or w[0].isupper() or not w.isalpha() or len(w) < 4:
             continue
         token_id = tokenizer.convert_tokens_to_ids("\u2581" + w)
         if token_id != tokenizer.unk_token_id:
@@ -61,6 +65,7 @@ def build_language(lang, cfg, tokenizer, seed):
     ds = ds.shuffle(seed=seed, buffer_size=5000)
 
     articles, total = [], 0
+    prefix_counts = Counter()
     for example in ds:
         sents = []
         for para in example["text"].split("\n"):
@@ -74,9 +79,13 @@ def build_language(lang, cfg, tokenizer, seed):
             if len(items) >= d["max_sentences_per_article"]:
                 break
             words = s.split()
-            pick = pick_target(words, tokenizer, rng)
+            pick = pick_target(words, tokenizer, rng, lang)
             if pick is None:
                 continue
+            key = " ".join(s.lower().split()[:5])
+            if prefix_counts[key] >= 5:
+                continue
+            prefix_counts[key] += 1
             i, token_id = pick
             masked = " ".join(words[:i] + [tokenizer.mask_token] + words[i + 1:])
             items.append({"lang": lang, "article_id": example["id"], "sentence": s,
