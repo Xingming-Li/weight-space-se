@@ -5,7 +5,8 @@ model:
 seed: 42
 
 data:
-  n_sentences_per_lang: 3000
+  n_sentences_per_lang: 4000
   min_words: 8
   max_words: 40
-  dev_fraction: 0.33
+  dev_fraction: 0.4  # About 1600 dev / 2400 test samples per language
+  max_sentences_per_article: 3
