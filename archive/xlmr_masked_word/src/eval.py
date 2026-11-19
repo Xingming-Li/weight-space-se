@@ -1,4 +1,5 @@
 import json
+from collections import defaultdict
 
 import torch
 from transformers import AutoModelForMaskedLM, AutoTokenizer
@@ -16,7 +17,9 @@ def load_model(cfg, device=None):
     model = AutoModelForMaskedLM.from_pretrained(name, revision=rev)
     return tokenizer, model.eval().to(device), device
 
-# Rank and log-prob of the target token at the mask, plus the top-k prediction.
+
+# Rank and log-prob of the target token at the mask position.
+# The LM head is applied only at the mask (not the whole sequence).
 @torch.no_grad()
 def score(model, tokenizer, rows, device, batch_size=64, topk=5):
     out = []
@@ -37,23 +40,35 @@ def score(model, tokenizer, rows, device, batch_size=64, topk=5):
             rank = int((lp > target).sum().item()) + 1
             top = lp.topk(topk).indices.tolist()
             out.append({
-                "lang": r["lang"], "masked": r["masked"],
-                "target": r["target_word"], "rank": rank,
-                "logprob": float(target),
-                "top": [t.replace("\u2581", "") for t in tokenizer.convert_ids_to_tokens(top)],
+                "lang": r["lang"], "stratum": r["stratum"],
+                "context_key": r["context_key"], "article_id": r["article_id"],
+                "masked": r["masked"], "target": r["target_word"],
+                "rank": rank, "logprob": float(target),
+                "top": [t.replace("\u2581", "")
+                        for t in tokenizer.convert_ids_to_tokens(top)],
             })
     return out
 
 
 def summarize(records):
     n = len(records)
+    if n == 0:
+        return {"n": 0}
     ranks = sorted(r["rank"] for r in records)
     frac = lambda k: sum(r["rank"] <= k for r in records) / n
     return {
         "n": n,
         "top1": frac(1), "top5": frac(5), "top10": frac(10),
-        "rank_gt10": 1 - frac(10),
         "rank_gt100": sum(r["rank"] > 100 for r in records) / n,
         "median_rank": ranks[n // 2],
         "mean_logprob": sum(r["logprob"] for r in records) / n,
     }
+
+
+def summarize_by_stratum(records):
+    groups = defaultdict(list)
+    for r in records:
+        groups[r["stratum"]].append(r)
+        groups["non_template"].append(r) if r["stratum"] != "template" else None
+        groups["all"].append(r)
+    return {k: summarize(v) for k, v in groups.items()}

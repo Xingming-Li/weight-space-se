@@ -11,7 +11,7 @@ from pathlib import Path
 import torch
 import transformers
 
-from src.eval import load_jsonl, load_model, score, summarize
+from src.eval import load_jsonl, load_model, score, summarize_by_stratum
 from src.utils import load_config, set_seed
 
 
@@ -20,9 +20,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/main.yaml")
-    ap.add_argument("--split", default="dev", choices=["dev"])  # Pilot is dev only
     ap.add_argument("--n_errors", type=int, default=40)
     args = ap.parse_args()
+    split = "dev"  # Pilot is dev-only by design
 
     cfg = load_config(args.config)
     set_seed(cfg["seed"])
@@ -37,38 +37,37 @@ def main():
     out_dir = Path("results")
     out_dir.mkdir(exist_ok=True)
 
-    summaries, all_records = {}, {}
+    summaries, records = {}, {}
     for lang in ["sv", "en"]:
-        rows = load_jsonl(f"data/{lang}_{args.split}.jsonl")
+        rows = load_jsonl(f"data/{lang}_{split}.jsonl")
         rec = score(model, tokenizer, rows, device)
-        all_records[lang] = rec
-        summaries[lang] = summarize(rec)
-        with open(out_dir / f"pilot_{args.split}_{lang}_items.jsonl", "w",
+        records[lang] = rec
+        summaries[lang] = summarize_by_stratum(rec)
+        with open(out_dir / f"pilot_{split}_{lang}_items.jsonl", "w",
                   encoding="utf-8") as f:
             for r in rec:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     print(json.dumps(env, indent=2))
-    print(f"\n{'':4s}{'n':>6s}{'top1':>8s}{'top5':>8s}{'top10':>8s}"
-          f"{'>10':>8s}{'>100':>8s}{'medRank':>9s}{'meanLP':>9s}")
-    for lang, s in summaries.items():
-        print(f"{lang:4s}{s['n']:6d}{s['top1']:8.3f}{s['top5']:8.3f}{s['top10']:8.3f}"
-              f"{s['rank_gt10']:8.3f}{s['rank_gt100']:8.3f}{s['median_rank']:9d}"
-              f"{s['mean_logprob']:9.2f}")
+    print(f"\n{'':4s}{'stratum':17s}{'n':>6s}{'top1':>8s}{'top5':>8s}"
+          f"{'>100':>8s}{'medRk':>7s}{'meanLP':>9s}")
+    for lang, by in summaries.items():
+        for st, s in by.items():
+            print(f"{lang:4s}{st:17s}{s['n']:6d}{s['top1']:8.3f}{s['top5']:8.3f}"
+                  f"{s['rank_gt100']:8.3f}{s['median_rank']:7d}{s['mean_logprob']:9.2f}")
 
-    # Wrong Swedish predictions for manual reading
+    # Wrong Swedish Non-template predictions, for manual reading
     rng = random.Random(cfg["seed"])
-    wrong = [r for r in all_records["sv"] if r["rank"] > 1]
+    wrong = [r for r in records["sv"] if r["rank"] > 1 and r["stratum"] != "template"]
     sample = rng.sample(wrong, min(args.n_errors, len(wrong)))
-    lines = []
-    for r in sample:
-        lines.append(f"{r['masked']}\n  target: {r['target']} (rank {r['rank']})"
-                     f"  top5: {', '.join(r['top'])}\n")
+    lines = [f"[{r['stratum']}] {r['masked']}\n  target: {r['target']} "
+             f"(rank {r['rank']})  top5: {', '.join(r['top'])}\n" for r in sample]
     (out_dir / "pilot_sv_errors.txt").write_text("\n".join(lines), encoding="utf-8")
 
-    with open(out_dir / f"pilot_{args.split}_summary.json", "w") as f:
+    with open(out_dir / f"pilot_{split}_summary.json", "w") as f:
         json.dump({"env": env, "summary": summaries}, f, indent=2)
-    print(f"\nwrote {len(sample)} wrong Swedish examples to results/pilot_sv_errors.txt")
+    print(f"\nwrote {len(sample)} wrong Swedish non-template examples "
+          f"to results/pilot_sv_errors.txt")
 
 
 if __name__ == "__main__":
