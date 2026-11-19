@@ -1,0 +1,10 @@
+seed: 42
+
+data:
+  dataset: facebook/belebele
+  langs: [swe_Latn, eng_Latn]
+  dev_fraction: 0.4        # Split by passage
+
+model:
+  name: null               # Chosen after the pilot (go/no-go)
+  revision: null

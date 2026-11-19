@@ -1,0 +1,7 @@
+{
+  "dataset": "facebook/belebele",
+  "revision": "7899cdfa4e1e0d733fd77c848e2c273cb1d32be2",
+  "seed": 42,
+  "dev_fraction": 0.4,
+  "dropped_mismatch": 0
+}
