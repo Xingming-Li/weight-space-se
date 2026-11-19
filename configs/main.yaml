@@ -10,7 +10,12 @@ model:
   revision: da87bfb608c14b7cf20ba1ce41287e8de496c0cd
 
 edit:
-  source_layers: [8, 12, 16, 20]   # Layers the directions are read from (the model has 28 in total)
-  alphas: [0.5, 1.0]               # 1.0 means full removal of the direction
+  source_layers: [8, 12, 16, 20]  # Layers the directions are read from (the model has 28 in total)
+  alphas: [0.5, 1.0]  # 1.0 means full removal of the direction
   max_en_drop: 0.02
-  n_random: 20
+  n_random: 10  # Random direction draws per config
+  n_null: 10  # Sign flip null draws per config
+  final:  # Fixed before testing
+    - {name: primary, layer: 12, alpha: 0.5}
+    - {name: secondary_ablation, layer: 12, alpha: 1.0}
+    

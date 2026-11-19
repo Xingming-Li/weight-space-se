@@ -1,0 +1,99 @@
+{
+  "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+  "baseline": {
+    "acc_sv": 0.5518207282913166,
+    "acc_en": 0.6694677871148459
+  },
+  "table": [
+    {
+      "acc_sv": 0.5350140056022409,
+      "acc_en": 0.6750700280112045,
+      "fixed_sv": 29,
+      "broken_sv": 35,
+      "fixed_en": 22,
+      "broken_en": 20,
+      "layer": 8,
+      "alpha": 0.5
+    },
+    {
+      "acc_sv": 0.40336134453781514,
+      "acc_en": 0.5154061624649859,
+      "fixed_sv": 31,
+      "broken_sv": 84,
+      "fixed_en": 25,
+      "broken_en": 80,
+      "layer": 8,
+      "alpha": 1.0
+    },
+    {
+      "acc_sv": 0.5770308123249299,
+      "acc_en": 0.6750700280112045,
+      "fixed_sv": 24,
+      "broken_sv": 15,
+      "fixed_en": 11,
+      "broken_en": 9,
+      "layer": 12,
+      "alpha": 0.5
+    },
+    {
+      "acc_sv": 0.453781512605042,
+      "acc_en": 0.6694677871148459,
+      "fixed_sv": 31,
+      "broken_sv": 66,
+      "fixed_en": 16,
+      "broken_en": 16,
+      "layer": 12,
+      "alpha": 1.0
+    },
+    {
+      "acc_sv": 0.5658263305322129,
+      "acc_en": 0.6890756302521008,
+      "fixed_sv": 16,
+      "broken_sv": 11,
+      "fixed_en": 14,
+      "broken_en": 7,
+      "layer": 16,
+      "alpha": 0.5
+    },
+    {
+      "acc_sv": 0.5770308123249299,
+      "acc_en": 0.6918767507002801,
+      "fixed_sv": 25,
+      "broken_sv": 16,
+      "fixed_en": 23,
+      "broken_en": 15,
+      "layer": 16,
+      "alpha": 1.0
+    },
+    {
+      "acc_sv": 0.5126050420168067,
+      "acc_en": 0.6610644257703081,
+      "fixed_sv": 30,
+      "broken_sv": 44,
+      "fixed_en": 31,
+      "broken_en": 34,
+      "layer": 20,
+      "alpha": 0.5
+    },
+    {
+      "acc_sv": 0.38375350140056025,
+      "acc_en": 0.47619047619047616,
+      "fixed_sv": 36,
+      "broken_sv": 96,
+      "fixed_en": 34,
+      "broken_en": 103,
+      "layer": 20,
+      "alpha": 1.0
+    }
+  ],
+  "chosen": {
+    "acc_sv": 0.5770308123249299,
+    "acc_en": 0.6750700280112045,
+    "fixed_sv": 24,
+    "broken_sv": 15,
+    "fixed_en": 11,
+    "broken_en": 9,
+    "layer": 12,
+    "alpha": 0.5
+  }
+}

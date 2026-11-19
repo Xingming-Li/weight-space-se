@@ -20,6 +20,11 @@ def build_prompt(item):
             f"{opts}\n\nAnswer:")
 
 
+def build_fewshot_prompt(item, shots):
+    parts = [build_prompt(s) + " " + LETTERS[a] for s, a in shots]
+    return "\n\n".join(parts + [build_prompt(item)])
+
+
 def load_model(name, device=device, revision=None):
     rev = revision or model_info(name).sha
     tokenizer = AutoTokenizer.from_pretrained(name, revision=rev)
@@ -41,14 +46,15 @@ def letter_ids(tokenizer):
 
 
 @torch.no_grad()
-def predict(model, tokenizer, rows, lang, batch_size=4, device=device):
+def predict(model, tokenizer, rows, lang, batch_size=4, device=device,
+            prompt_fn=build_prompt):
     ids = letter_ids(tokenizer)
     order = sorted(range(len(rows)), key=lambda i: len(rows[i][lang]["passage"]))
     out = [None] * len(rows)
     for s in range(0, len(order), batch_size):
         idx = order[s:s + batch_size]
-        prompts = [build_prompt(rows[i][lang]) for i in idx]
-        enc = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
+        prompts = [prompt_fn(rows[i][lang]) for i in idx]
+        enc = tok(prompts, return_tensors="pt", padding=True).to(device)
         logits = model(**enc, logits_to_keep=1).logits[:, -1, :]
         lp = logits[:, ids].float().log_softmax(-1).cpu()
         for j, i in enumerate(idx):
