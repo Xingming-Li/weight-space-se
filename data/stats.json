@@ -1,0 +1,38 @@
+{
+  "sv_dev": {
+    "n": 1905,
+    "context_keys": 1434,
+    "strata": {
+      "template": 411,
+      "natural": 1393,
+      "foreign_natural": 101
+    }
+  },
+  "sv_test": {
+    "n": 2801,
+    "context_keys": 2002,
+    "strata": {
+      "natural": 1987,
+      "template": 669,
+      "foreign_natural": 145
+    }
+  },
+  "en_dev": {
+    "n": 1868,
+    "context_keys": 1772,
+    "strata": {
+      "natural": 1773,
+      "template": 34,
+      "foreign_natural": 61
+    }
+  },
+  "en_test": {
+    "n": 2786,
+    "context_keys": 2603,
+    "strata": {
+      "natural": 2659,
+      "template": 39,
+      "foreign_natural": 88
+    }
+  }
+}

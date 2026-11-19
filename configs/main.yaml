@@ -5,8 +5,12 @@ model:
 seed: 42
 
 data:
-  n_sentences_per_lang: 4000
+  n_sentences_per_lang: 3000  # Non-template items per language
+  max_articles: 40000  # Safety stop for streaming
   min_words: 8
   max_words: 40
-  dev_fraction: 0.4  # About 1600 dev / 2400 test samples per language
+  dev_fraction: 0.4
   max_sentences_per_article: 3
+  template_min_count: 20
+  template_cap: 100
+  natural_key_cap: 5

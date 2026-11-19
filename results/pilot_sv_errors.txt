@@ -1,0 +1,119 @@
+Pedra do Indaiá är en <mask> i Brasilien.
+  target: kommun (rank 19)  top5: borg, park, ö, berg, by
+
+Runt Taquarivaí är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Ursprungligen hade han för avsikt att tillverka maskiner för textilindustrin, men efter att ha konfronterats med bristande efterfrågan på denna <mask> inriktade han sig istället på bomullsförädling.
+  target: vara (rank 72)  top5: bransch, produkt, teknik, industri, tjänst
+
+Omgivningarna <mask> Votuporanga är en mosaik av jordbruksmark och naturlig växtlighet.
+  target: runt (rank 4)  top5: i, kring, av, runt, till
+
+Runt Almirante Tamandaré do Sul är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, mest, relativt, ganska, mindre
+
+Cássia dos Coqueiros är en <mask> i Brasilien.
+  target: kommun (rank 3)  top5: stad, by, kommun, ö, borg
+
+Runt São Sebastião do Alto är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 80)  top5: mest, mais, bastante, um, muito
+
+Runt Itapitanga är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, mest, relativt, ganska, mindre
+
+Ett <mask> från 1521 förtydligar stadsborgarnas rättigheter och skyldigheter mot adelssläkten Schönburg, vad som indikerar att orten var en stad.
+  target: dokument (rank 2)  top5: brev, dokument, lag, protokoll, testament
+
+Runt Bom Jesus do Galho är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Runt Doresópolis är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Runt União da Vitória Airport är det i <mask> tätbebyggt.
+  target: huvudsak (rank 3)  top5: dag, princip, huvudsak, övrigt, stort
+
+Runt Boa Esperança är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Under andra Kongokrigets inledning erövrades flygbasen 4 augusti 1998 av rebeller som med <mask> av Rwanda flög in trupper och soldater från Goma flygplats, men 23 augusti togs den av angolanska trupper och katangeser lojala med Laurent-Désiré Kabila.
+  target: stöd (rank 2)  top5: hjälp, stöd, anledning, uppdrag, tillstånd
+
+Poço das Trincheiras är en <mask> i Brasilien.
+  target: kommun (rank 563)  top5: cidade, lugar, ciudad, localidad, localidade
+
+São José da Barra är en <mask> i Brasilien.
+  target: kommun (rank 15)  top5: cidade, vila, município, capital, stad
+
+Runt Porteirinha är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, mest, relativt, ganska, mindre
+
+Runt Bariri är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mest, mycket, relativt, ganska, mindre
+
+Runt São Miguel Arcanjo är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mest, mycket, relativt, främst, ganska
+
+Runt Amparo do Serra är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, mest, relativt, ganska, främst
+
+Det finns även en <mask> i Yonne, Frankrike, som heter Roffey.
+  target: plats (rank 4)  top5: by, camping, ö, plats, stad
+
+São Sebastião da Amoreira är en <mask> i Brasilien.
+  target: kommun (rank 385)  top5: cidade, municipio, lugar, ciudad, município
+
+Runt Sarapuí är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Runt Campo Grande är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+São Sebastião do Rio Preto är en <mask> i Brasilien.
+  target: kommun (rank 47)  top5: cidade, municipio, ciudad, localidad, município
+
+Att upprätthålla rekrytering till fältet har <mask> varit en utmaning.
+  target: också (rank 2)  top5: alltid, också, länge, ofta, givetvis
+
+Runt Nova Resende är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Felício dos Santos är en <mask> i Brasilien.
+  target: kommun (rank 198)  top5: politiker, artist, journalist, poet, fotograf
+
+Runt Nova Guataporanga är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, mest, relativt, ganska, mindre
+
+São João do Pau d'Alho är en <mask> i Brasilien.
+  target: kommun (rank 1737)  top5: cidade, vila, município, capital, localidade
+
+Runt Tapiraí är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 5)  top5: mycket, mest, relativt, främst, ganska
+
+Förekommande heraldiska symboler på de <mask> vapensköldarna är ett lejon, tre vänsterställda gröna ormar, en murkrona med en ihopringlad orm och en ginstam med den keltiska krigsgudinnan Morrigans märke, (i.e tre kråkfåglar ställda på rad).
+  target: olika (rank 2)  top5: tre, olika, fyra, här, svenska
+
+Terrängen på Ilha do Veiga är <mask> platt.
+  target: mycket (rank 2)  top5: en, mycket, ganska, väldigt, inte
+
+Museet innehåller samtidskonst samt fotografier och är ett av Europas största <mask> sin genre.
+  target: inom (rank 2)  top5: i, inom, för, enligt, på
+
+São João do Paraíso är en <mask> i Brasilien.
+  target: kommun (rank 625)  top5: cidade, município, vila, capital, localidade
+
+Bom Jesus do Norte är en <mask> i Brasilien.
+  target: kommun (rank 3)  top5: stad, by, kommun, ort, flygplats
+
+Runt Pontal är det <mask> tätbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mest, mycket, relativt, ganska, mindre
+
+Ngandajika ligger <mask> över havet och antalet invånare är .
+  target: meter (rank 8)  top5: strax, högt, mitt, långt, direkt
+
+Runt Castro Airport är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: ganska (rank 4)  top5: mycket, relativt, mest, ganska, främst
+
+Runt Vale do Capão är det <mask> glesbefolkat, med invånare per kvadratkilometer.
+  target: mycket (rank 2)  top5: mest, mycket, relativt, ganska, lite
