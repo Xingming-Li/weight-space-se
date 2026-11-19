@@ -1,4 +1,5 @@
 # Baseline difficulty on the dev split only.
+# python -m scripts.pilot --config configs/main.yaml
 
 import argparse
 import json

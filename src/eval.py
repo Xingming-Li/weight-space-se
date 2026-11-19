@@ -24,11 +24,15 @@ def score(model, tokenizer, rows, device, batch_size=64, topk=5):
         batch = rows[start:start + batch_size]
         enc = tokenizer([r["masked"] for r in batch], return_tensors="pt",
                         padding=True, truncation=True, max_length=256).to(device)
-        logits = model(**enc).logits
+        hidden = model.roberta(input_ids=enc.input_ids,
+                               attention_mask=enc.attention_mask).last_hidden_state
+        is_mask = enc.input_ids == tokenizer.mask_token_id
+        assert (is_mask.sum(1) == 1).all(), "each sentence needs exactly one mask"
+        idx = is_mask.float().argmax(1)
+        h = hidden[torch.arange(len(batch), device=device), idx]
+        lp_all = model.lm_head(h).float().log_softmax(-1)
         for j, r in enumerate(batch):
-            pos = (enc.input_ids[j] == tokenizer.mask_token_id).nonzero().flatten()
-            assert len(pos) == 1, f"expected one mask, got {len(pos)}: {r['masked']}"
-            lp = logits[j, pos[0]].float().log_softmax(-1)
+            lp = lp_all[j]
             target = lp[r["target_id"]]
             rank = int((lp > target).sum().item()) + 1
             top = lp.topk(topk).indices.tolist()
