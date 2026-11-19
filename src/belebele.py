@@ -54,7 +54,7 @@ def predict(model, tokenizer, rows, lang, batch_size=4, device=device,
     for s in range(0, len(order), batch_size):
         idx = order[s:s + batch_size]
         prompts = [prompt_fn(rows[i][lang]) for i in idx]
-        enc = tok(prompts, return_tensors="pt", padding=True).to(device)
+        enc = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
         logits = model(**enc, logits_to_keep=1).logits[:, -1, :]
         lp = logits[:, ids].float().log_softmax(-1).cpu()
         for j, i in enumerate(idx):

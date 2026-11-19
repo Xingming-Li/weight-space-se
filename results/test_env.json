@@ -1,0 +1,9 @@
+{
+  "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+  "seed": 42,
+  "torch": "2.6.0+cu124",
+  "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "n_test": 543,
+  "n_random": 10,
+  "n_null": 10
+}

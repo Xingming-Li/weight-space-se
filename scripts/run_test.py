@@ -1,5 +1,5 @@
 # Run on the test split. Files are committed before running.
-# 
+# python -m scripts.run_test --config configs/main.yaml
 
 import argparse
 import json
