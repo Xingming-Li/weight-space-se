@@ -1,6 +1,12 @@
-transformers
-datasets
-accelerate
-pyyaml
-numpy
-scipy
+# If GPU is accessable, install PyTorch first with CUDA wheel:
+# pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+transformers==5.23.0
+tokenizers==0.23.3
+safetensors==0.8.0
+huggingface_hub==2.4.0
+datasets==5.2.0
+accelerate==1.16.0
+numpy==2.4.6
+scipy==1.17.1
+pyyaml==6.0.3
